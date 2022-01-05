@@ -8,7 +8,7 @@ Dotfiles are configuration files for various programs, and they help those progr
 ## ![Screenshot](Pictures/4.png)
 ## ![Screenshot](Pictures/5.png)
 ## The programs i use
-- **[i3w-gaps] (https://github.com/Airblader/i3)**\
+- ** [i3w-gaps] (https://github.com/Airblader/i3) **\
 - **[Polybar] (https://github.com/polybar/polybar)**\
 - **[Kitty] (https://github.com/kovidgoyal/kitty)**\
 - **Bash**\
