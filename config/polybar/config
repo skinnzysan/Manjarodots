@@ -1,0 +1,130 @@
+;==========================================================
+;
+;
+;   ██████╗  ██████╗ ██╗  ██╗   ██╗██████╗  █████╗ ██████╗
+;   ██╔══██╗██╔═══██╗██║  ╚██╗ ██╔╝██╔══██╗██╔══██╗██╔══██╗
+;   ██████╔╝██║   ██║██║   ╚████╔╝ ██████╔╝███████║██████╔╝
+;   ██╔═══╝ ██║   ██║██║    ╚██╔╝  ██╔══██╗██╔══██║██╔══██╗
+;   ██║     ╚██████╔╝███████╗██║   ██████╔╝██║  ██║██║  ██║
+;   ╚═╝      ╚═════╝ ╚══════╝╚═╝   ╚═════╝ ╚═╝  ╚═╝╚═╝  ╚═╝
+;
+;
+;==========================================================
+
+[colors]
+background = #e60a030f
+background-alt = #e6391155
+foreground = #bfa2ce
+foreground-alt = #555
+primary = #ffb52a
+secondary = #e60053
+alert = #bd2c40
+
+[bar/example]
+width = 100%
+height = 35
+offset-x = 1%
+offset-y = 1%
+radius = 0
+fixed-center = true
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 3
+line-color = #f00
+
+border-left-size = 20
+border-top-size = 20
+border-right-size = 20
+border-bottom-size = 0
+border-color = #00000000
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 0
+module-margin-right = 2
+
+font-0 = FiraCode Nerd Font:style=medium:size=10;1
+
+modules-left = i3 xwindow
+modules-right = spotify eth wlan pulseaudio date time
+
+tray-position = none
+wm-restack = i3
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
+[module/xwindow]
+type = internal/xwindow
+label = %title%
+label-maxlen = 50
+
+[module/i3]
+type = internal/i3
+format = <label-state>
+
+label-focused = %index%
+label-focused-background = ${colors.background-alt}
+label-focused-padding = 2
+
+label-unfocused = %index%
+label-unfocused-padding = 2 
+
+[module/wlan]
+type = internal/network
+interface = lo
+interval = 3.0
+
+format-connected = 直<label-connected>
+label-connected = %essid%
+
+[module/eth]
+type = internal/network
+interface = enp0s3
+interval = 3.0
+
+format-connected =  <label-connected>
+label-connected = %local_ip%
+
+[module/time]
+type = internal/date
+interval = 5
+
+date = "%a %b %d"
+time = %H:%M
+
+format =  <label>
+label = %time%
+
+[module/date]
+type = internal/date
+interval = 5
+
+date = "%d.%m.%y"
+
+format =  <label>
+label = %date%        
+
+[module/pulseaudio]
+type = internal/pulseaudio
+
+format-volume = 墳 <label-volume>
+label-volume = %percentage%
+
+format-muted = 婢
+
+[module/spotify]
+type = custom/script
+interval = 1
+format =  <label>
+exec = python ~/.config/polybar/scripts/spotify_status.py -f '{artist}: {song}'
+
+[settings]
+screenchange-reload = true
+
+[global/wm]
+margin-top = 5
+margin-bottom = 5
